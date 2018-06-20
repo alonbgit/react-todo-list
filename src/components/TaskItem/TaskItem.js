@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import './TaskItem.scss';
 
 class TaskItem extends Component {
 
     render() {
         return (
-            <div className="task-item">
+            <li className="task-item">
                 <span>{ this.props.task.name }</span>
-            </div>
+            </li>
         )
     }
 
