@@ -10,7 +10,11 @@ const get = (url) => {
 
             setTimeout(() => {
 
-            return server[url];
+                const result = server[url]();
+                const response = {
+                    data: result
+                }
+                resolve(response);
 
             }, INTERVAL);
 
