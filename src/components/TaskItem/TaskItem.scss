@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
 
+    .task-name {
+        width: 90%;
+    }
+
 }
 
 .task-item:hover {

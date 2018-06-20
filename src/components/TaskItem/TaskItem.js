@@ -6,7 +6,8 @@ class TaskItem extends Component {
     render() {
         return (
             <li className="task-item">
-                <span>{ this.props.task.name }</span>
+                <span className="task-name">{ this.props.task.name }</span>
+                <span onClick={this.props.deleteTask}>✕</span>
             </li>
         )
     }

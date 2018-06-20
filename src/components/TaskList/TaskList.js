@@ -9,7 +9,9 @@ class TaskList extends Component {
             <div className="task-list">
                 <ul>
                     {this.props.tasks.map((task) => {
-                        return <TaskItem task={task}/>
+                        return <TaskItem task={task}
+                                         key={task.id}
+                                         deleteTask={() => this.props.deleteTask(task)}/>
                     })}
                 </ul>
             </div>

@@ -24,17 +24,32 @@ class TodoList extends Component {
         return (
             <div className="todo-list">
                 <TodoListInput addTask={this.onTaskAdded}/>
-                <TaskList tasks={this.state.tasks}/>
+                <TaskList tasks={this.state.tasks}
+                          deleteTask={this.onDeleteTask}/>
             </div>
         )
     }
 
-    onTaskAdded(taskName) {
+    onTaskAdded = (taskName) => {
         const tasks = [...this.state.tasks];
-        tasks.push(taskName);
+        tasks.push({
+            id: Math.random(),
+            name: taskName
+        });
         this.setState({
             tasks: tasks
         });
+    }
+
+    onDeleteTask = (task) => {
+        const taskToDeleteIndex = this.state.tasks.findIndex((c) => c.id == task.id);
+        if (taskToDeleteIndex !== -1) {
+            const tasks = [...this.state.tasks];
+            tasks.splice(taskToDeleteIndex, 1);
+            this.setState({
+                tasks: tasks
+            });
+        }
     }
 
 }

@@ -3,11 +3,17 @@ import './TodoListInput.scss';
 
 class TodoListInput extends Component {
 
+    state = {
+        taskName: ''
+    }
+
     render() {
         return (
             <div className="todo-list-input">
-                <input type="text"/>
-                <button onClick={this.props.addTask}>Add Task</button>
+                <input type="text"
+                       value={this.state.taskName}
+                       onChange={(e) => this.setState({taskName: e.target.value})}/>
+                <button onClick={() => this.props.addTask(this.state.taskName)}>Add Task</button>
             </div>
         ) 
     }
