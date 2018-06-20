@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import './TodoList.scss';
 import TodoListInput from '../TodoListInput/TodoListInput';
 import TaskList from '../TaskList/TaskList';
+import httpService from '../../services/httpService';
 
 class TodoList extends Component {
 
     state = {
         tasks: []
+    }
+
+    componentWillMount() {
+        httpService.get('/tasks').then((response) => {
+            this.setState({
+                tasks: response.data
+            });
+        }).catch((ex) => {
+            console.log('ERROR', ex);
+        });
     }
 
     render() {
